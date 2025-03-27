@@ -70,6 +70,7 @@ def delete_budget():
         return
       else:
         print('Deletion canceled.')
+        return
     else:
       print(f'The file {file_path} doesn\'t exists.')
       return
