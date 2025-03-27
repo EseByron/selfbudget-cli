@@ -58,17 +58,21 @@ def load_budget():
       return loaded_budget
 
 def delete_budget():
-  budget_selection = input('Enter the name of the budget file your want to delete: ')
-  file_path = f'{budget_selection}.json'
-  
-  if os.path.exists(f'{budget_selection}.json'):
-    print(f'You sure you want to delete {file_path}?')
-    if secondary_functions.confirmation():
-      os.remove(file_path)
-      print(f'{file_path} has been deleted.')
+  while True:
+    budget_selection = input('Enter the name of the budget file your want to delete: ')
+    file_path = f'{budget_selection}.json'
+
+    if os.path.exists(file_path):
+      print(f'You sure you want to delete {file_path}?')
+      if secondary_functions.confirmation():
+        os.remove(file_path)
+        print(f'{file_path} has been deleted.\n')
+        return
+      else:
+        print('Deletion canceled.')
     else:
-      print('Deletion canceled.')
-       
+      print(f'The file {file_path} doesn\'t exists.')
+      return
        
 
 
