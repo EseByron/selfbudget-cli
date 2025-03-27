@@ -11,9 +11,6 @@ def new_budget():
   Creates a new budget by gathering user input for the budget name, total amount, 
   categories, and their percentages. Calculates amounts for each category and 
   optionally saves the data to a JSON file.
-
-  Returns:
-    None
   """
   budget_name = secondary_functions.get_name()
   amount = secondary_functions.get_total_amount()
@@ -29,6 +26,7 @@ def new_budget():
   """Printing the last made budget info."""
   secondary_functions.print_budget(budget_data)
 
+  """Prompting the user to save the budget in a .json file"""
   print('Would you like to save a .json file with this information?')
   if secondary_functions.confirmation():
     file_name = input('Name your file: ')
@@ -90,9 +88,6 @@ while True:
   '4) Edit budget\n' \
   '0) Exit program'
   print(main_menu)
-  loaded_budget = ''
-  if loaded_budget:
-    print(f'Loaded budget: {loaded_budget}')
 
   selection = input('Select an option: ')
   if selection == '1':
