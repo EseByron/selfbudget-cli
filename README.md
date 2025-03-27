@@ -1,60 +1,66 @@
-# selfbudget-cli: My very first project in Python.
+# selfbudget-cli: My very first project in Python
 
-## Introduction
+## How It Works
 
-The `selfbudget-cli` is a command-line interface (CLI) tool designed to help you manage your personal budget efficiently. Built with Python, this project is perfect for users who want a simple yet powerful way to track their income, expenses, and savings directly from the terminal.
+The `selfbudget-cli` program is a command-line tool designed to help users manage their personal budgets. Below is a guide on how to use the program effectively:
 
-## How It Works: Step-by-Step Guide
+### 1. Launch the Program
+To start the program, open your terminal or command prompt, navigate to the project directory, and run:
+```bash
+python selfbudget_v2.0.py
+```
 
-1. **Installation**  
-    Clone the repository and navigate to the project directory:
-    ```bash
-    git clone https://github.com/yourusername/selfbudget-cli.git
-    cd selfbudget-cli
-    ```
-    Install the required dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
+### 2. Main Menu
+Once the program starts, you will see the following main menu:
+```plaintext
+MAIN MENU:
+1) New budget
+2) Load budget
+3) Delete budget
+4) Edit budget
+0) Exit program
+```
+Choose an option by typing the corresponding number and pressing Enter.
 
-2. **Setup**  
-    Run the initialization command to set up your budget:
-    ```bash
-    python selfbudget.py init
-    ```
-    Follow the prompts to input your initial budget details.
+### 3. Features
+#### **1) New Budget**
+- Create a new budget by:
+  - Naming your budget.
+  - Entering the total budget amount.
+  - Defining categories and their percentages.
+- The program calculates the amount allocated to each category.
+- Optionally, save the budget as a `.json` file for future use.
 
-3. **Adding Income**  
-    To add income, use the following command:
-    ```bash
-    python selfbudget.py add-income --amount <amount> --source <source>
-    ```
-    Replace `<amount>` with the income amount and `<source>` with the income source.
+#### **2) Load Budget**
+- Load a previously saved budget by entering the file name (without the `.json` extension).
+- The program will display the details of the loaded budget.
 
-4. **Adding Expenses**  
-    To log an expense, use:
-    ```bash
-    python selfbudget.py add-expense --amount <amount> --category <category>
-    ```
-    Replace `<amount>` with the expense amount and `<category>` with the expense category.
+#### **3) Delete Budget**
+- Delete an existing budget file by entering its name (without the `.json` extension).
+- Confirm the deletion when prompted.
+- The file will be permanently removed from the directory.
 
-5. **Viewing Summary**  
-    To view your current budget summary, run:
-    ```bash
-    python selfbudget.py summary
-    ```
+#### **4) Edit Budget**
+*(Feature in progress)*
 
-6. **Exporting Data**  
-    Export your budget data to a file for backup or analysis:
-    ```bash
-    python selfbudget.py export --format <format> --output <filename>
-    ```
-    Replace `<format>` with the desired file format (e.g., CSV) and `<filename>` with the output file name.
+#### **0) Exit Program**
+- Exit the program safely.
 
-7. **Help**  
-    For a list of all available commands, use:
-    ```bash
-    python selfbudget.py --help
-    ```
+### 4. Error Handling
+- If you attempt to load or delete a file that doesn’t exist, the program will notify you and allow you to try again.
+- Invalid inputs are handled gracefully, and the program will prompt you to re-enter valid data.
 
-With these steps, you can easily manage your budget and keep track of your financial goals using `selfbudget-cli`.
+### 5. File Management
+All budgets are saved as `.json` files in the program's directory. You can back up, share, or manually manage these files as needed.
+
+### Example Workflow
+1. Start the program by running:
+   ```bash
+   python selfbudget_v2.0.py
+   ```
+2. Create a new budget by selecting option `1` and saving it as `my_budget.json`.
+3. Load the saved budget later using option `2`.
+4. Delete the budget when no longer needed using option `3`.
+5. Exit the program by selecting option `0`.
+
+This program is a simple yet powerful tool to help you organize and manage your personal finances directly from the command line!
