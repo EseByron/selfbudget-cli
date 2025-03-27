@@ -21,6 +21,7 @@ def slice_making():
   splitted_slices = []
   for slice in splitting_slices:
     splitted_slices.append(slice.strip())
+  print(splitted_slices)
   return splitted_slices
 
 def percentage_definition(slices):
@@ -29,9 +30,9 @@ def percentage_definition(slices):
   percentages = []
   while True:
     for slice in slices:
-      percentage = input(f'What\'s the percentage for {slice}: ')
+      percentage = input(f'What\'s the percentage for {slice} (only whole numbers): ')
       try:
-        percentage = round(float(percentage), 2) * 0.01
+        percentage = int(percentage) * 0.01
         percentages.append(percentage)
       except ValueError:
         print('Invalid input. Please enter a valid number.')
@@ -40,7 +41,9 @@ def percentage_definition(slices):
       print(f'Your percentages surpass 100%, try again. ({sum(percentages) * 100}%)')
       percentage_definition(slices)
     elif sum(percentages) < 1:
-      print(f'Your percentages do not get to a 100%, you\'re leaving {(1 - sum(percentages)) * 100}% behind.')
+      percent_total = sum(percentages)
+      remaining_percent = float(1 - percent_total) * 100
+      print(f'Your percentages do not get to a 100%, you\'re leaving {remaining_percent:.2f}% behind.')
       percentage_definition(slices)
     return percentages
 
@@ -49,7 +52,8 @@ def calculate_amounts(amount, slices, percentages):
   percentages."""
   slices_with_amounts = {}
   for slice, percentage in zip(slices, percentages):
-    slice_amount = round(amount * percentage, 2)
+    slice_amount = amount * percentage
+    slice_amount = float(slice_amount)
     slices_with_amounts[slice] = slice_amount
   return slices_with_amounts
 
@@ -59,7 +63,7 @@ def print_budget(budget_data):
   print(f'Total amount: ${budget_data["Total amount"]}')
   print('\nSlices:')
   for slice, amount in budget_data['Division'].items():
-    print(f'{slice}: ${amount:,.2f}')
+    print(f'{slice}: ${amount:,}')
   print('\n--------------------------------------\n')
 
 def confirmation():
