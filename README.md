@@ -2,52 +2,59 @@
 
 ## Introduction
 
-The `selfbudget-cli` is a command-line tool designed to help you manage your personal budget efficiently. With this program, you can track your income, expenses, and savings, all from the comfort of your terminal.
+The `selfbudget-cli` is a command-line interface (CLI) tool designed to help you manage your personal budget efficiently. Built with Python, this project is perfect for users who want a simple yet powerful way to track their income, expenses, and savings directly from the terminal.
 
-## How to Use
+## How It Works: Step-by-Step Guide
 
-### Step 1: Installation
-1. Clone the repository:
+1. **Installation**  
+    Clone the repository and navigate to the project directory:
     ```bash
     git clone https://github.com/yourusername/selfbudget-cli.git
-    ```
-2. Navigate to the project directory:
-    ```bash
     cd selfbudget-cli
     ```
-3. Install the required dependencies:
+    Install the required dependencies:
     ```bash
     pip install -r requirements.txt
     ```
 
-### Step 2: Running the Program
-1. Launch the program by running:
+2. **Setup**  
+    Run the initialization command to set up your budget:
     ```bash
-    python main.py
+    python selfbudget.py init
+    ```
+    Follow the prompts to input your initial budget details.
+
+3. **Adding Income**  
+    To add income, use the following command:
+    ```bash
+    python selfbudget.py add-income --amount <amount> --source <source>
+    ```
+    Replace `<amount>` with the income amount and `<source>` with the income source.
+
+4. **Adding Expenses**  
+    To log an expense, use:
+    ```bash
+    python selfbudget.py add-expense --amount <amount> --category <category>
+    ```
+    Replace `<amount>` with the expense amount and `<category>` with the expense category.
+
+5. **Viewing Summary**  
+    To view your current budget summary, run:
+    ```bash
+    python selfbudget.py summary
     ```
 
-### Step 3: Adding Income
-1. Use the `add-income` command to log your income:
+6. **Exporting Data**  
+    Export your budget data to a file for backup or analysis:
     ```bash
-    python main.py add-income --amount 500 --source "Freelance Work"
+    python selfbudget.py export --format <format> --output <filename>
+    ```
+    Replace `<format>` with the desired file format (e.g., CSV) and `<filename>` with the output file name.
+
+7. **Help**  
+    For a list of all available commands, use:
+    ```bash
+    python selfbudget.py --help
     ```
 
-### Step 4: Adding Expenses
-1. Use the `add-expense` command to track your expenses:
-    ```bash
-    python main.py add-expense --amount 200 --category "Groceries"
-    ```
-
-### Step 5: Viewing Summary
-1. Use the `view-summary` command to see an overview of your budget:
-    ```bash
-    python main.py view-summary
-    ```
-
-### Step 6: Saving Data
-1. Save your budget data to a file:
-    ```bash
-    python main.py save --file budget_data.json
-    ```
-
-That's it! You're now ready to manage your budget with `selfbudget-cli`.
+With these steps, you can easily manage your budget and keep track of your financial goals using `selfbudget-cli`.
