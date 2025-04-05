@@ -7,11 +7,9 @@ def get_total_amount():
   """Prompt the user to enter the total amount to divide and return it as a float."""
   while True:
     amount_input = input('Enter the total amount you want to divide: ')
-    
     try:
       amount = float(amount_input)
       return amount
-    
     except ValueError:
       print('Invalid entry, use only numbers and fractions.')
 
@@ -24,7 +22,6 @@ def slice_making():
   
   for slice in splitting_slices:
     splitted_slices.append(slice.strip())
-  
   return splitted_slices
 
 def percentage_definition(slices):

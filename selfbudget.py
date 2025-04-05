@@ -30,7 +30,7 @@ def new_budget():
   print('Would you like to save a .json file with this information?')
   if secondary_functions.confirmation():
     file_name = input('Name your file: ')
-    with open(f'{file_name}.json', 'w') as budget_file:
+    with open(f'budgets/{file_name}.json', 'w') as budget_file:
       json.dump(budget_data, budget_file, indent=4)
     print(f'Your budget has been saved as "{file_name}.json\n')
   else:
@@ -45,20 +45,23 @@ def load_budget():
     dict: The loaded budget data if the file is successfully found and parsed.
   """
   while True:
-    budget_selection = input('Enter the name of the budget file you want to load: ')
-    try:
-      with open(f'{budget_selection}.json') as budget_file:
-        loaded_budget = json.load(budget_file)
-    except FileNotFoundError:
-      print(f'The file {budget_selection}.json was not found, try again.')
+    budget_selection = input('Enter the name of the budget file you want to load or 0  to go back to main menu: ')
+    if budget_selection == '0':
+      break
     else:
-      secondary_functions.print_budget(loaded_budget)
-      return loaded_budget
+      try:
+        with open(f'{budget_selection}.json') as budget_file:
+          loaded_budget = json.load(budget_file)
+      except FileNotFoundError:
+        print(f'The file {budget_selection}.json was not found, try again.')
+      else:
+        secondary_functions.print_budget(loaded_budget)
+        return loaded_budget
 
 def delete_budget():
   while True:
     budget_selection = input('Enter the name of the budget file your want to delete: ')
-    file_path = f'{budget_selection}.json'
+    file_path = f'budgets/{budget_selection}.json'
 
     if os.path.exists(file_path):
       print(f'You sure you want to delete {file_path}?')
@@ -72,8 +75,27 @@ def delete_budget():
     else:
       print(f'The file {file_path} doesn\'t exists.')
       return
-       
 
+def main_menu():
+  while True:
+    main_menu = 'MAIN MENU:\n' \
+    '1) New budget\n' \
+    '2) Load budget\n' \
+    '3) Delete budget\n' \
+    '4) Edit budget\n' \
+    '0) Exit program'
+    print(main_menu)
+  
+    selection = input('Select an option: ')
+    if selection == '1':
+      new_budget()
+    elif selection == '2':
+      load_budget()
+    elif selection == '3':
+      delete_budget()
+    elif selection == '0':
+      break
+  
 
 # WORKFLOW
 
@@ -81,21 +103,4 @@ welcome_message = '\n Hello, welcome to the budget calculator by EseByron.\n'
 print(welcome_message)
 
 while True:
-  main_menu = 'MAIN MENU:\n' \
-  '1) New budget\n' \
-  '2) Load budget\n' \
-  '3) Delete budget\n' \
-  '4) Edit budget\n' \
-  '0) Exit program'
-  print(main_menu)
-
-  selection = input('Select an option: ')
-  if selection == '1':
-    loaded_budget = new_budget()
-  elif selection == '2':
-    loaded_budget = load_budget()
-  elif selection == '3':
-    delete_budget()
-  elif selection == '0':
-    break
-  
+  main_menu()
